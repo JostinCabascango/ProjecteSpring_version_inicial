@@ -64,4 +64,20 @@ public class BaseDatos {
         }
     }
 
+    public void modificar(Libro libro) {
+        Iterator<Libro> it = libros.iterator();
+        while (it.hasNext()) {
+            Libro li = it.next();
+            if (li.getId() == libro.getId()) {
+                li.setTitulo(libro.getTitulo());
+                li.setAutor(libro.getAutor());
+                li.setEditorial(libro.getEditorial());
+                li.setFecha(libro.getFecha());
+                li.setTematica(libro.getTematica());
+                break;
+            }
+        }
+
+    }
+
 }
