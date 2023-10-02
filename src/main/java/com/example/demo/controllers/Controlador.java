@@ -15,6 +15,7 @@ import repository.BaseDatos;
 @Controller
 public class Controlador {
     BaseDatos bd = new BaseDatos();
+    Usuario usuario;
 
     @GetMapping("/")
     public String iniciar(Model model) {
@@ -27,12 +28,22 @@ public class Controlador {
         if (usuario.getNombre().equals("edu") && usuario.getPassword().equals("edu")) {
             ArrayList<Libro> libros = bd.getLibros();
             model.addAttribute("usuario", usuario);
+            this.usuario = usuario;
             model.addAttribute("libros", libros);
             return "consulta";
         } else {
             return "login";
 
         }
+    }
+
+    @PostMapping("/insertar")
+    public String insertarLibro(Libro libro, Model model) {
+        bd.inserta(libro);
+        ArrayList<Libro> libros = bd.getLibros();
+        model.addAttribute("usuario", this.usuario);
+        model.addAttribute("libros", libros);
+        return "consulta";
     }
 
 }
