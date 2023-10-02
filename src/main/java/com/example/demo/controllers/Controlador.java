@@ -2,9 +2,11 @@ package com.example.demo.controllers;
 
 import java.util.ArrayList;
 
+import org.apache.logging.log4j.message.StringFormattedMessage;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.bean.Usuario;
@@ -43,6 +45,20 @@ public class Controlador {
         ArrayList<Libro> libros = bd.getLibros();
         model.addAttribute("usuario", this.usuario);
         model.addAttribute("libros", libros);
+        model.addAttribute("boton", "Insertar Libro");
+        model.addAttribute("action", "/insertar");
+        model.addAttribute("libro", null);
+        return "consulta";
+    }
+
+    @GetMapping("borrado/{id}")
+    public String borrar(@PathVariable int id, Model model) {
+        bd.borrar(id);
+        ArrayList<Libro> libros = bd.getLibros();
+        model.addAttribute("libros", libros);
+        model.addAttribute("usuario", this.usuario);
+        model.addAttribute("boton", "Insertar Libro");
+        model.addAttribute("action", "/insertar");
         return "consulta";
     }
 
