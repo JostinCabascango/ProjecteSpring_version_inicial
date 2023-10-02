@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -12,6 +12,31 @@
     <h3>Password: <span th:text="${usuario.password}"></span></h3>
 
     <h1>Listado de Libros</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Titulo</th>
+                <th>Autor</th>
+                <th>Editorial</th>
+                <th>Fecha</th>
+                <th>Tematica</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:if="${libros.empty}">
+                <td colspan="2">No Books Available</td>
+            </tr>
+            <tr th:each="libro : ${libros}">
+                <td><span th:text="${libro.id}"></span></td>
+                <td><span th:text="${libro.titulo}"></span></td>
+                <td><span th:text="${libro.autor}"></span></td>
+                <td><span th:text="${libro.editorial}"></span></td>
+                <td><span th:text="${libro.fecha}"></span></td>
+                <td><span th:text="${libro.tematica}"></span></td>
+            </tr>
+        </tbody>
+    </table>
 
 </body>
 
