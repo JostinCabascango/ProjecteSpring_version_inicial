@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.bean.Usuario;
 import com.example.demo.bean.Libro;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Controller
+@RequestMapping("")
 public class Controlador {
     //BaseDatos bd = new BaseDatos();
     BaseDatos2 bd = new BaseDatos2();
@@ -42,8 +44,8 @@ public class Controlador {
     }
 
     @PostMapping("/insertar")
-    public String insertarLibro(Libro libro, Model model) {
-        bd.inserta(libro);
+    public String insertar(Libro libro, Model model) {
+        bd.insertar(libro);
         ArrayList<Libro> libros = bd.getLibros();
         model.addAttribute("usuario", this.usuario);
         model.addAttribute("libros", libros);
@@ -76,7 +78,7 @@ public class Controlador {
         return "consulta";
     }
 
-    @GetMapping("/modificar")
+    @PostMapping("/modificar")
     public String modificar2(Libro libro, Model model) {
         bd.modificar(libro);
         ArrayList<Libro> libros = bd.getLibros();
