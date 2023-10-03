@@ -31,6 +31,7 @@ public class Controlador {
             model.addAttribute("usuario", usuario);
             this.usuario = usuario;
             model.addAttribute("libros", libros);
+
             return "consulta";
         } else {
             return "login";
@@ -80,7 +81,7 @@ public class Controlador {
         model.addAttribute("libros", libros);
         model.addAttribute("libro", null);
         model.addAttribute("usuario", this.usuario);
-        model.addAttribute("boton", "Inserta Libro");
+        model.addAttribute("boton", "Insertar Libro");
         model.addAttribute("action", "/insertar");
         return "consulta";
     }

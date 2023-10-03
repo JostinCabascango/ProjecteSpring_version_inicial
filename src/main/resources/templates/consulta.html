@@ -8,62 +8,62 @@
 </head>
 
 <body>
-    <h3>Usuario: <span th:text="${usuario.nombre}"></span></h3>
-    <h3>Password: <span th:text="${usuario.password}"></span></h3>
+<h3>Usuario: <span th:text="${usuario.nombre}"></span></h3>
+<h3>Password: <span th:text="${usuario.password}"></span></h3>
 
-    <h1>Listado de Libros</h1>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Titulo</th>
-                <th>Autor</th>
-                <th>Editorial</th>
-                <th>Fecha</th>
-                <th>Tematica</th>
-                <th>Borrado</th>
-                <th>Modificar</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:if="${libros.empty}">
-                <td colspan="2">No Books Available</td>
-            </tr>
-            <tr th:each="libro : ${libros}">
-                <td><span th:text="${libro.id}"></span></td>
-                <td><span th:text="${libro.titulo}"></span></td>
-                <td><span th:text="${libro.autor}"></span></td>
-                <td><span th:text="${libro.editorial}"></span></td>
-                <td><span th:text="${libro.fecha}"></span></td>
-                <td><span th:text="${libro.tematica}"></span></td>
-                <td><a th:href="@{/borrado/}+${libro.id}">Borrado</a></td>
-                <td><a th:href="@{/modificar/}+${libro.id}">Modificar</a></td>
+<h1>Listado de Libros</h1>
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Titulo</th>
+        <th>Autor</th>
+        <th>Editorial</th>
+        <th>Fecha</th>
+        <th>Tematica</th>
+        <th>Borrado</th>
+        <th>Modificar</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${libros.isEmpty()}">
+        <td colspan="2">No Books Available</td>
+    </tr>
+    <tr th:each="libro : ${libros}">
+        <td><span th:text="${libro.id}"></span></td>
+        <td><span th:text="${libro.titulo}"></span></td>
+        <td><span th:text="${libro.autor}"></span></td>
+        <td><span th:text="${libro.editorial}"></span></td>
+        <td><span th:text="${libro.fecha}"></span></td>
+        <td><span th:text="${libro.tematica}"></span></td>
+        <td><a th:href="@{/borrado/}+${libro.id}">Borrado</a></td>
+        <td><a th:href="@{/modificar/}+${libro.id}">Modificar</a></td>
 
-            </tr>
-        </tbody>
-    </table>
-    <form action="/insertar" method="post">
-        <br>
-        ID:
-        <input type="text" name="id">
-        <br />
-        Título:
-        <input type="text" name="titulo">
-        <br />
-        Autor:
-        <input type="text" name="autor">
-        <br>
-        Editorial:
-        <input type="text" name="editorial">
-        <br>
-        Fecha:
-        <input type="text" name="fecha">
-        <br>
-        Tematica:
-        <input type="text" name="telematica">
-        <br>
-        <input type="submit" name="submit" value="Insertar Libro">
-    </form>
+    </tr>
+    </tbody>
+</table>
+<form th:action="${action}" method="post">
+    <br>
+    ID:
+    <input type="text" name="id" th:value="${libro?.id}">
+    <br/>
+    Título:
+    <input type="text" name="titulo" th:value="${libro?.titulo}">
+    <br/>
+    Autor:
+    <input type="text" name="autor" th:value="${libro?.autor}">
+    <br>
+    Editorial:
+    <input type="text" name="editorial" th:value="${libro?.editorial}">
+    <br>
+    Fecha:
+    <input type="text" name="fecha" th:value="${libro?.fecha}">
+    <br>
+    Tematica:
+    <input type="text" name="telematica" th:value="${libro?.telematica}">
+    <br>
+    <input type="submit" name="submit" th:value="${boton}">
+</form>
 
 </body>
 
