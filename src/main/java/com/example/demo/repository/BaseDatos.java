@@ -1,4 +1,4 @@
-package repository;
+package com.example.demo.repository;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -80,4 +80,14 @@ public class BaseDatos {
 
     }
 
+    public Libro getLibro(int id) {
+        Iterator<Libro> it = libros.iterator();
+        while (it.hasNext()) {
+            Libro li = it.next();
+            if (li.getId() == id) {
+                return li;
+            }
+        }
+        return null;
+    }
 }

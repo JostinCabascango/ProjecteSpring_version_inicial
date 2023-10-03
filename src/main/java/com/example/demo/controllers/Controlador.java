@@ -2,7 +2,7 @@ package com.example.demo.controllers;
 
 import java.util.ArrayList;
 
-import org.apache.logging.log4j.message.StringFormattedMessage;
+import com.example.demo.repository.BaseDatos;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.example.demo.bean.Usuario;
 import com.example.demo.bean.Libro;
 
-import repository.BaseDatos;
 
 @Controller
 public class Controlador {
@@ -74,7 +73,7 @@ public class Controlador {
         return "consulta";
     }
 
-    @GetMapping("/modificar}")
+    @GetMapping("/modificar")
     public String modificar2(Libro libro, Model model) {
         bd.modificar(libro);
         ArrayList<Libro> libros = bd.getLibros();
