@@ -3,6 +3,7 @@ package com.example.demo.controllers;
 import java.util.ArrayList;
 
 import com.example.demo.repository.BaseDatos;
+import com.example.demo.repository.BaseDatos2;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +16,8 @@ import com.example.demo.bean.Libro;
 
 @Controller
 public class Controlador {
-    BaseDatos bd = new BaseDatos();
+    //BaseDatos bd = new BaseDatos();
+    BaseDatos2 bd = new BaseDatos2();
     Usuario usuario;
 
     @GetMapping("/")
