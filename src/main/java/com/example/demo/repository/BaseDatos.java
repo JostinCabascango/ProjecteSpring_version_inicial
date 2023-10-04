@@ -48,7 +48,7 @@ public class BaseDatos {
 
     }
 
-    public void inserta(Libro libro) {
+    public void insertar(Libro libro) {
         libros.add(libro);
 
     }

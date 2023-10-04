@@ -1,4 +1,7 @@
 package com.example.demo.repository;
 
-public interface BaseDatos3 extends org.springframework.data.jpa.repository.JpaRepository<com.example.demo.bean.Libro, java.lang.Integer> {
+import com.example.demo.bean.Libro;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface BaseDatos3 extends JpaRepository<Libro, Integer> {
 }

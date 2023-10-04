@@ -4,6 +4,9 @@ import java.util.ArrayList;
 
 import com.example.demo.repository.BaseDatos;
 import com.example.demo.repository.BaseDatos2;
+import com.example.demo.repository.BaseDatos3;
+import com.example.demo.service.BaseDatos3Service;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,8 +21,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("")
 public class Controlador {
-    //BaseDatos bd = new BaseDatos();
-    BaseDatos2 bd = new BaseDatos2();
+    @Autowired()
+    BaseDatos3Service bd;
     Usuario usuario;
 
     @GetMapping("/")
@@ -30,17 +33,19 @@ public class Controlador {
 
     @PostMapping("/")
     public String login(Model model, Usuario usuario) {
-        if (usuario.getNombre().equals("edu") && usuario.getPassword().equals("edu")) {
-            ArrayList<Libro> libros = bd.getLibros();
-            model.addAttribute("usuario", usuario);
-            this.usuario = usuario;
-            model.addAttribute("libros", libros);
+        if (usuario != null && usuario.getNombre() != null && usuario.getPassword() != null) {
+            if (usuario.getNombre().equals("edu") && usuario.getPassword().equals("edu")) {
+                ArrayList<Libro> libros = bd.getLibros();
+                model.addAttribute("usuario", usuario);
+                this.usuario = usuario;
+                model.addAttribute("libros", libros);
 
-            return "consulta";
-        } else {
-            return "login";
-
+                return "consulta";
+            }
         }
+
+        // Si el usuario es nulo o las credenciales no coinciden, redirige a la página de login.
+        return "login";
     }
 
     @PostMapping("/insertar")
