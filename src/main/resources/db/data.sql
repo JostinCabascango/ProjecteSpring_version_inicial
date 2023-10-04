@@ -1,3 +1,6 @@
+-- Limpiar la tabla antes de insertar nuevos datos
+DELETE FROM libros;
+DELETE FROM usuarios;
 -- Insertar datos en la tabla "libros"
 INSERT INTO libros (id, titulo, autor, editorial, fecha, tematica)
 VALUES (1, 'Cien años de soledad', 'Gabriel García Márquez', 'Editorial Sudamericana', '1967-05-30', 'Realismo mágico'),
