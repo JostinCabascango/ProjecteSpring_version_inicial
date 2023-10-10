@@ -1,10 +1,6 @@
 package com.example.demo.controllers;
 
 import java.util.ArrayList;
-
-import com.example.demo.repository.BaseDatos;
-import com.example.demo.repository.BaseDatos2;
-import com.example.demo.repository.BaseDatos3;
 import com.example.demo.service.BaseDatos3Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
